@@ -1,4 +1,4 @@
-package com.gildedrose;
+package fr.esiea.al5;
 
 public class Item {
 

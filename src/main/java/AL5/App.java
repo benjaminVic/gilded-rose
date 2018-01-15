@@ -1,10 +1,10 @@
-package AL5;
+package fr.esiea.al5;
 
 /**
  * Hello world!
  *
  */
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
