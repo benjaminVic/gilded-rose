@@ -241,4 +241,10 @@ public class GildedRoseTest {
 
     }
 
+    @Test
+    public void myTestString() {
+        Item item = new Item("apple",-1, 10);
+        System.out.println(item.toString());
+    }
+
 }
