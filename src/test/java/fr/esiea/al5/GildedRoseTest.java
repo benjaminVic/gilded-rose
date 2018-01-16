@@ -247,4 +247,11 @@ public class GildedRoseTest {
         System.out.println(item.toString());
     }
 
+    @Test
+    public void myTestApp() {
+        App t = new App();
+        String [] args = { "test1", "test2", "test3" };
+        t.main(args);
+    }
+
 }
