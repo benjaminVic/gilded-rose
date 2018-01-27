@@ -1,6 +1,6 @@
 package fr.esiea.al5;
 
-public abstract class ItemAbstract implements Item {
+public class ItemAbstract implements Item {
 
     private final String name;
 
@@ -11,7 +11,7 @@ public abstract class ItemAbstract implements Item {
     private final boolean conjured;
 
     /**
-     *
+     * Item constructor
      * @param name
      * @param sellIn
      * @param quality
@@ -37,9 +37,9 @@ public abstract class ItemAbstract implements Item {
      * Reduce quality of an item by 1 up to 0.
      */
     public void decreaseQuality() {
-        if (this.quality >= 0) {
+        if (this.qualityCanBeReduced()) {
             this.quality = this.quality - 1;
-            if (this.sellIn <= 0 && this.quality > 0) {
+            if (this.isConjured() && this.qualityCanBeReduced()) {
                 this.quality = this.quality - 1;
             }
         }
@@ -49,18 +49,54 @@ public abstract class ItemAbstract implements Item {
      * Increase quality of an item by 1 up to 50.
      */
     public void increaseQuality() {
-        if (this.quality < 50) {
+        if (qualityCanBeIncreased()) {
             this.quality = this.quality + 1;
         }
     }
 
+    /**
+     * Reduce quality to 0.
+     */
+    public void trashQuality(){
+        this.quality = 0;
+    }
+
+    /**
+     * Check wether the item quality can be reudced.
+     * @return boolena : Return true if the quality can be reduced, else false.
+     */
+    private boolean qualityCanBeReduced() {
+        return this.quality > 0;
+    }
+
+    /**
+     * Check wether the item quality can be increased.
+     * @return boolena : Return true if the quality can be increased, else false.
+     */
+    private boolean qualityCanBeIncreased() {
+        return this.quality < 50;
+    }
+
+    /**
+     * Reduce the numbers of days for an item sale.
+     */
     public void reduceSellIn(){
-        //TODO
         this.sellIn = this.sellIn - 1;
     }
 
     /**
-     * Return the name of the item.
+     * Indicates whether and item is passedBy or not.
+     * @return boolean :True if sellIn equal or inferior to 0.
+     */
+    public boolean isSellInDatePassed() {
+        if (this.sellIn < 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Returns the name of the item.
      * @return String : Name of the item
      */
     public String getName() {
@@ -68,7 +104,23 @@ public abstract class ItemAbstract implements Item {
     }
 
     /**
-     * Return wether the item is conjured.
+     * Returns the date in which the item has to be sold. Else will lose valuetwice as fast.
+     * @return int : number of days before it has to be sold
+     */
+    public int getSellIn() {
+        return this.sellIn;
+    }
+
+    /**
+     * Returns the quality of the item.
+     * @return int : Item quality
+     */
+    public int getQuality() {
+        return this.quality;
+    }
+
+    /**
+     * Returns whether the item is conjured.
      * @return boolean : Conjured state
      */
     public boolean isConjured() {
