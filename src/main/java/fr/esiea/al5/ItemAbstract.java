@@ -89,10 +89,7 @@ public class ItemAbstract implements Item {
      * @return boolean :True if sellIn equal or inferior to 0.
      */
     public boolean isSellInDatePassed() {
-        if (this.sellIn < 0) {
-            return true;
-        }
-        return false;
+        return (this.sellIn < 0);
     }
 
     /**

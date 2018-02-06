@@ -8,6 +8,10 @@ class GildedRose {
     }
 
     public void updateQuality() {
+        //TODO Externaliser dans ItemAbstract le cas général d'update quality : Methode updateItemQuality
+        //TODO Créer des Class Item[SpecialItem.Name] pour définir l'update quality spécifique
+        //TODO Pour définir l'attribut "name" de l'Item[SpecialItem.name] pointer sur le contenu de l'enum Sécial Item
+            // ça centralise les chaines de caractères et ça semble plus simple à maintenir.
         for (int i = 0; i < items.length; i++) {
             if (!items[i].getName().equals(SpecialItems.AGED_BRIE.getName())
                     && !items[i].getName().equals(SpecialItems.BACKSTAGE_PASS.getName())
