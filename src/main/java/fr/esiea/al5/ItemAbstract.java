@@ -123,4 +123,15 @@ public class ItemAbstract implements Item {
     public boolean isConjured() {
         return conjured;
     }
+
+    /**
+     * Update the Quality of an Item
+     */
+    public void updateItemQuality() {
+        this.decreaseQuality();
+        this.reduceSellIn();
+        if ( this.isSellInDatePassed() ) {
+            this.decreaseQuality();
+        }
+    }
 }
