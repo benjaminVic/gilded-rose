@@ -3,8 +3,8 @@ package fr.esiea.al5;
 public enum SpecialItems {
 
     AGED_BRIE("Aged Brie"),
-    SULFURAS("Sulfuras, Hand of Ragnaros"),
-    BACKSTAGE_PASS("Backstage passes to a TAFKAL80ETC concert");
+    SULFURAS("Sulfuras"),
+    BACKSTAGE_PASS("Backstage");
 
     private final String name;
 

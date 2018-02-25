@@ -2,16 +2,14 @@ package fr.esiea.al5;
 
 public class ItemSulfuras extends ItemAbstract {
 
-	public ItemSulfuras() {
-		super(SpecialItems.SULFURAS.getName(), 0, 80, false);
-	}
+	public ItemSulfuras(String name, int sellIn, int quality, boolean conjured) { super(SpecialItems.SULFURAS.getName(), sellIn, quality, conjured); }
 
 	@Override
 	public String getName() {
 		return SpecialItems.SULFURAS.getName();
 	}
 
-	@Override
+	//@Override
 	public void updateItemQuality() {
 		// Sulfuras Item is Legendary so there is no update on Quality and SellIn
 	}

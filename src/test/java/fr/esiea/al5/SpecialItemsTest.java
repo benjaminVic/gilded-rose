@@ -13,6 +13,6 @@ public class SpecialItemsTest extends TestCase {
     @org.junit.Test
     public void testGetName(){
         assertTrue(SpecialItems.BACKSTAGE_PASS.getName()
-                == "Backstage passes to a TAFKAL80ETC concert");
+                == "Backstage");
     }
 }
