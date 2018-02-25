@@ -8,12 +8,12 @@ public class ItemSulfurasTest {
 
     @Test
     public void testObjectProperty(){
-    	ItemSulfuras item = new ItemSulfuras();
+    	ItemSulfuras item = new ItemSulfuras("Sulfuras", 0, 80, false);
 
         SoftAssertions softly = new SoftAssertions();
 		softly.assertThat(item.getName())
                 .as("sulfuras name")
-                .isEqualTo("Sulfuras, Hand of Ragnaros");
+                .isEqualTo("Sulfuras");
 
         softly.assertThat(item.getQuality())
                 .as("sulfuras quality")
@@ -32,7 +32,7 @@ public class ItemSulfurasTest {
 
     @Test
     public void testObjectQualityUpdate(){
-        ItemSulfuras item = new ItemSulfuras();
+        ItemSulfuras item = new ItemSulfuras("Sulfuras", 0, 80, false);
         item.updateItemQuality();
 
         SoftAssertions softly = new SoftAssertions();
