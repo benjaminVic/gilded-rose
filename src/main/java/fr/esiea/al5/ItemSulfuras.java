@@ -2,7 +2,7 @@ package fr.esiea.al5;
 
 public class ItemSulfuras extends ItemAbstract {
 
-	public ItemSulfuras(int sellIn, int quality, boolean conjured) { super(SpecialItems.SULFURAS.getName(), sellIn, quality, conjured); }
+	public ItemSulfuras(String name, int sellIn, int quality, boolean conjured) { super(SpecialItems.SULFURAS.getName(), sellIn, quality, conjured); }
 
 	@Override
 	public String getName() {
