@@ -2,7 +2,7 @@ package fr.esiea.al5;
 
 public class ItemBackstagePass extends ItemAbstract{
 
-    public ItemBackstagePass(String name, int sellIn, int quality, boolean conjured) { super(SpecialItems.BACKSTAGE_PASS.getName(), sellIn, quality, conjured); }
+    public ItemBackstagePass(int sellIn, int quality, boolean conjured) { super(SpecialItems.BACKSTAGE_PASS.getName(), sellIn, quality, conjured); }
 
     @Override
     public String getName() {
