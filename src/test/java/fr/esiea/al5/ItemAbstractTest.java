@@ -1,6 +1,7 @@
 package fr.esiea.al5;
 
 import org.assertj.core.api.SoftAssertions;
+import org.junit.Assert;
 import org.junit.Assert.*;
 import org.junit.Test;
 
@@ -18,6 +19,7 @@ public class ItemAbstractTest {
     @Test
     public void nonSpecificObjectQualityAndPriceUpdate() {
         ItemAbstract item = new ItemAbstract("apple", 2, 10, false);
+        Assert.assertTrue(item instanceof ItemAbstract);
         item.updateItemQuality();
 
         SoftAssertions softly = new SoftAssertions();

@@ -1,6 +1,7 @@
 package fr.esiea.al5;
 
 import org.assertj.core.api.SoftAssertions;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class ItemAgedBrieTest {
@@ -9,6 +10,7 @@ public class ItemAgedBrieTest {
     @Test
     public void testObjectProperty() {
         ItemAbstract item = ItemFactory.createItem("Aged Brie",2, 7, false);
+        Assert.assertTrue(item instanceof ItemAgedBrie);
 
         SoftAssertions softly = new SoftAssertions();
 

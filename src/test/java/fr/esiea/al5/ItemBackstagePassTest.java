@@ -1,6 +1,7 @@
 package fr.esiea.al5;
 
 import org.assertj.core.api.SoftAssertions;
+import org.junit.Assert;
 import org.junit.Assert.*;
 import org.junit.Test;
 
@@ -9,6 +10,7 @@ public class ItemBackstagePassTest {
     @Test
     public void testObjectProperty(){
         ItemAbstract item = ItemFactory.createItem("Backstage",11, 10, false);
+        Assert.assertTrue(item instanceof ItemBackstagePass);
 
         SoftAssertions softly = new SoftAssertions();
 
