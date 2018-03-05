@@ -8,7 +8,7 @@ public class ItemBackstagePassTest {
 
     @Test
     public void testObjectProperty(){
-        ItemBackstagePass item = new ItemBackstagePass("Backstage", 11, 10, false);
+        ItemAbstract item = ItemFactory.createItem("Backstage",11, 10, false);
 
         SoftAssertions softly = new SoftAssertions();
 
@@ -33,7 +33,7 @@ public class ItemBackstagePassTest {
 
     @Test
     public void testQualityCantBeMore50() {
-        ItemBackstagePass item = new ItemBackstagePass("Backstage", 2, 50, false);
+        ItemBackstagePass item = new ItemBackstagePass(2, 50);
         item.updateItemQuality();
 
         SoftAssertions softly = new SoftAssertions();
@@ -50,7 +50,7 @@ public class ItemBackstagePassTest {
 
     @Test
     public void testBackstagePassesUpdateDay10To5() {
-        ItemBackstagePass item = new ItemBackstagePass("Backstage", 10, 0, false);
+        ItemBackstagePass item = new ItemBackstagePass(10, 0);
         item.updateItemQuality();
 
         SoftAssertions softly = new SoftAssertions();
@@ -67,7 +67,7 @@ public class ItemBackstagePassTest {
 
     @Test
     public void testBackstagePassesUpdateDay5To1() {
-        ItemBackstagePass item = new ItemBackstagePass("Backstage", 5, 0, false);
+        ItemBackstagePass item = new ItemBackstagePass(5, 0);
         item.updateItemQuality();
 
         SoftAssertions softly = new SoftAssertions();
@@ -84,7 +84,7 @@ public class ItemBackstagePassTest {
 
     @Test
     public void testBackstagePassesUpdateDay0AndLess(){
-        ItemBackstagePass item = new ItemBackstagePass("Backstage", 0, 0, false);
+        ItemBackstagePass item = new ItemBackstagePass(0, 0);
 
         item.updateItemQuality();
 
@@ -103,7 +103,7 @@ public class ItemBackstagePassTest {
 
     @Test
     public void testBackstagePassesUpdate(){
-        ItemBackstagePass item = new ItemBackstagePass("Backstage", 15, 12, false);
+        ItemBackstagePass item = new ItemBackstagePass(15, 12);
         item.updateItemQuality();
 
         SoftAssertions softly = new SoftAssertions();

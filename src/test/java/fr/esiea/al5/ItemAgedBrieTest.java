@@ -8,7 +8,7 @@ public class ItemAgedBrieTest {
 
     @Test
     public void testObjectProperty() {
-        ItemAgedBrie item = new ItemAgedBrie("Aged Brie", 2, 7, false);
+        ItemAbstract item = ItemFactory.createItem("Aged Brie",2, 7, false);
 
         SoftAssertions softly = new SoftAssertions();
 
@@ -32,7 +32,7 @@ public class ItemAgedBrieTest {
     }
     @Test
     public void testQualityCantBeMore50() {
-        ItemAgedBrie item = new ItemAgedBrie("Aged Brie", 2, 50, false);
+        ItemAgedBrie item = new ItemAgedBrie(2, 50);
         item.updateItemQuality();
 
         SoftAssertions softly = new SoftAssertions();
@@ -49,7 +49,7 @@ public class ItemAgedBrieTest {
 
     @Test
     public void testAgedBrieAfterUpdate() {
-        ItemAgedBrie item = new ItemAgedBrie("Aged Brie", 2, 0, false);
+        ItemAgedBrie item = new ItemAgedBrie( 2, 0);
 
         item.updateItemQuality();
 
@@ -69,7 +69,7 @@ public class ItemAgedBrieTest {
 
     @Test
     public void testAgedBrieAfter50DaysFromDay100() {
-        ItemAgedBrie item = new ItemAgedBrie("Aged Brie", 100, 0, false);
+        ItemAgedBrie item = new ItemAgedBrie(100, 0);
 
         for (int i = 0; i < 75; i++) item.updateItemQuality();
 
@@ -89,7 +89,7 @@ public class ItemAgedBrieTest {
 
     @Test
     public void testAgedBrieAfter50DaysFromDay1() {
-        ItemAgedBrie item = new ItemAgedBrie("Aged Brie", 1, 0, false);
+        ItemAgedBrie item = new ItemAgedBrie(1, 0);
 
         for (int i = 0; i < 75; i++) item.updateItemQuality();
 

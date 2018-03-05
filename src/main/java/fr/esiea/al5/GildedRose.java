@@ -1,15 +1,25 @@
 package fr.esiea.al5;
 
-class GildedRose {
-    ItemAbstract[] items;
+import java.util.ArrayList;
 
-    public GildedRose(ItemAbstract[] items) {
-        this.items = items;
+class GildedRose {
+    protected ArrayList<ItemAbstract> items = new ArrayList<>();
+
+    public GildedRose() {
+        //empty Constructor
     }
 
     public void updateQuality() {
+        for (Item item : items) {
+            item.updateItemQuality();
+        }
+    }
 
-        for (ItemAbstract item : items) {item.updateItemQuality();}
+    public void addAllItem(ArrayList<ItemAbstract> items) {
+        this.items.addAll(items);
+    }
 
+    public void addItem(ItemAbstract item){
+        this.items.add(item);
     }
 }

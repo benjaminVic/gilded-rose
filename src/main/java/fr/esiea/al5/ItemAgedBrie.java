@@ -2,7 +2,9 @@ package fr.esiea.al5;
 
 public class ItemAgedBrie extends ItemAbstract{
 
-    public ItemAgedBrie(String name, int sellIn, int quality, boolean conjured) { super(SpecialItems.AGED_BRIE.getName(), sellIn, quality, false); }
+    public ItemAgedBrie(int sellIn, int quality) {
+        super(SpecialItems.AGED_BRIE.getName(), sellIn, quality, false);
+    }
 
     @Override
     public String getName() {

@@ -8,7 +8,7 @@ public class ItemSulfurasTest {
 
     @Test
     public void testObjectProperty(){
-    	ItemSulfuras item = new ItemSulfuras("Sulfuras", 0, 80, false);
+    	ItemAbstract item = ItemFactory.createItem("Sulfuras",0, 80, false);
 
         SoftAssertions softly = new SoftAssertions();
 		softly.assertThat(item.getName())
@@ -32,7 +32,7 @@ public class ItemSulfurasTest {
 
     @Test
     public void testObjectQualityUpdate(){
-        ItemSulfuras item = new ItemSulfuras("Sulfuras", 0, 80, false);
+        ItemSulfuras item = new ItemSulfuras(0, 80);
         item.updateItemQuality();
 
         SoftAssertions softly = new SoftAssertions();

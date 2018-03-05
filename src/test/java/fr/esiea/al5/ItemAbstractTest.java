@@ -4,12 +4,14 @@ import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert.*;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 
 public class ItemAbstractTest {
 
     @Test
     public void testToString() {
-        ItemAbstract item = new ItemAbstract("apple",-1, 10, false);
+        ItemAbstract item = ItemFactory.createItem("apple",-1, 10, false);
         System.out.println(item.toString());
     }
 
@@ -87,9 +89,11 @@ public class ItemAbstractTest {
     @Test
     public void testItemUpdate() {
         ItemAbstract item = new ItemAbstract("apple",2, 1, false);
-        ItemAbstract[] items = new ItemAbstract[]{item};
+        ArrayList<ItemAbstract> items = new ArrayList<>();
+        items.add(item);
 
-        GildedRose tavern = new GildedRose(items);
+        GildedRose tavern = new GildedRose();
+        tavern.addAllItem(items);
         tavern.updateQuality();
 
         SoftAssertions softly = new SoftAssertions();
@@ -108,9 +112,9 @@ public class ItemAbstractTest {
     @Test
     public void testSellInPassed() {
         ItemAbstract item = new ItemAbstract("apple",0, 10, false);
-        ItemAbstract[] items = new ItemAbstract[]{item};
 
-        GildedRose tavern = new GildedRose(items);
+        GildedRose tavern = new GildedRose();
+        tavern.addItem(item);
         tavern.updateQuality();
 
         SoftAssertions softly = new SoftAssertions();
@@ -128,9 +132,11 @@ public class ItemAbstractTest {
     @Test
     public void testQualityCantBeNegative() {
         ItemAbstract item = new ItemAbstract("apple",2, 0, false);
-        ItemAbstract[] items = new ItemAbstract[]{item};
+        ArrayList<ItemAbstract> items = new ArrayList<>();
+        items.add(item);
 
-        GildedRose tavern = new GildedRose(items);
+        GildedRose tavern = new GildedRose();
+        tavern.addAllItem(items);
         tavern.updateQuality();
 
         SoftAssertions softly = new SoftAssertions();
@@ -148,9 +154,9 @@ public class ItemAbstractTest {
     @Test
     public void testConjuredQualityReduction() {
         ItemAbstract item = new ItemAbstract("apple",0, 10, true);
-        ItemAbstract[] items = new ItemAbstract[]{item};
 
-        GildedRose tavern = new GildedRose(items);
+        GildedRose tavern = new GildedRose();
+        tavern.addItem(item);
         tavern.updateQuality();
 
         SoftAssertions softly = new SoftAssertions();
