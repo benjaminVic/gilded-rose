@@ -27,6 +27,10 @@ public class ItemAbstractTest {
                 .as("apple price")
                 .isEqualTo(1);
 
+        softly.assertThat(item.getName())
+                .as("apple name")
+                .isEqualTo("apple");
+
         softly.assertAll();
     }
 
