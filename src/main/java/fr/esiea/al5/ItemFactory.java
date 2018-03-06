@@ -23,7 +23,7 @@ public class ItemFactory {
             return new ItemAgedBrie(sellin, quality);
         }
         if (name.toLowerCase().equals(SpecialItems.SULFURAS.getName().toLowerCase())) {
-            return new ItemSulfuras(sellin, quality);
+            return new ItemSulfuras(sellin);
         }
         return new ItemAbstract(name, sellin, quality, cursed);
         }

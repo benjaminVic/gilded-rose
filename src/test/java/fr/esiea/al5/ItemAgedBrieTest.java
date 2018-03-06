@@ -3,6 +3,8 @@ package fr.esiea.al5;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class ItemAgedBrieTest {
 
@@ -32,81 +34,31 @@ public class ItemAgedBrieTest {
 
         softly.assertAll();
     }
-    @Test
-    public void testQualityCantBeMore50() {
-        ItemAgedBrie item = new ItemAgedBrie(2, 50);
-        item.updateItemQuality();
 
-        SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(item.getQuality())
-                .as("Aged Brie quality")
-                .isEqualTo(50);
+    @ParameterizedTest
+    @CsvSource({
+            "2, 50, 1, 1, 50",
+            "2, 0, 1, 1, 1",
+            "100, 0, 75, 25, 50",
+            "1, 0, 75, -1, 50"
+    })
+    public void testAgedBrieUpdate(int sellIn, int quality, int numberOfUpdates, int expectedSellIn, int expectedQuality) {
+        ItemAgedBrie item = new ItemAgedBrie(sellIn, quality);
 
-        softly.assertThat(item.getSellIn())
-                .as("Aged Brie Days left")
-                .isEqualTo(1);
-
-        softly.assertAll();
-    }
-
-    @Test
-    public void testAgedBrieAfterUpdate() {
-        ItemAgedBrie item = new ItemAgedBrie( 2, 0);
-
-        item.updateItemQuality();
+        for (int i = 0; i < numberOfUpdates; i++) item.updateItemQuality();
 
         SoftAssertions softly = new SoftAssertions();
 
         softly.assertThat(item.getSellIn())
                 .as("Aged Brie")
-                .isEqualTo(1);
+                .isEqualTo(expectedSellIn);
 
         softly.assertThat(item.getQuality())
                 .as("Aged Brie")
-                .isEqualTo(1);
+                .isEqualTo(expectedQuality);
 
         softly.assertAll();
 
     }
 
-    @Test
-    public void testAgedBrieAfter50DaysFromDay100() {
-        ItemAgedBrie item = new ItemAgedBrie(100, 0);
-
-        for (int i = 0; i < 75; i++) item.updateItemQuality();
-
-        SoftAssertions softly = new SoftAssertions();
-
-        softly.assertThat(item.getSellIn())
-                .as("Aged Brie")
-                .isEqualTo(25);
-
-        softly.assertThat(item.getQuality())
-                .as("Aged Brie")
-                .isEqualTo(50);
-
-        softly.assertAll();
-
-    }
-
-    @Test
-    public void testAgedBrieAfter50DaysFromDay1() {
-        ItemAgedBrie item = new ItemAgedBrie(1, 0);
-
-        for (int i = 0; i < 75; i++) item.updateItemQuality();
-
-        SoftAssertions softly = new SoftAssertions();
-
-        softly.assertThat(item.getSellIn())
-                .as("Aged Brie")
-                .isEqualTo(-1);
-
-        softly.assertThat(item.getQuality())
-                .as("Aged Brie")
-                .isEqualTo(50);
-
-
-        softly.assertAll();
-
-    }
 }

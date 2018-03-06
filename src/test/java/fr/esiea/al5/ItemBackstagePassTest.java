@@ -4,6 +4,8 @@ import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.junit.Assert.*;
 import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class ItemBackstagePassTest {
 
@@ -33,90 +35,27 @@ public class ItemBackstagePassTest {
         softly.assertAll();
     }
 
-    @Test
-    public void testQualityCantBeMore50() {
-        ItemBackstagePass item = new ItemBackstagePass(2, 50);
-        item.updateItemQuality();
-
-        SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(item.getQuality())
-                .as("Backstage quality")
-                .isEqualTo(50);
-
-        softly.assertThat(item.getSellIn())
-                .as("Backstage Days left")
-                .isEqualTo(1);
-
-        softly.assertAll();
-    }
-
-    @Test
-    public void testBackstagePassesUpdateDay10To5() {
-        ItemBackstagePass item = new ItemBackstagePass(10, 0);
-        item.updateItemQuality();
-
-        SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(item.getQuality())
-                .as("Backstage")
-                .isEqualTo(2);
-        softly.assertThat(item.getSellIn())
-                .as("Backstage")
-                .isEqualTo(9);
-
-        softly.assertAll();
-
-    }
-
-    @Test
-    public void testBackstagePassesUpdateDay5To1() {
-        ItemBackstagePass item = new ItemBackstagePass(5, 0);
-        item.updateItemQuality();
-
-        SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(item.getQuality())
-                .as("Backstage")
-                .isEqualTo(3);
-        softly.assertThat(item.getSellIn())
-                .as("Backstage")
-                .isEqualTo(4);
-
-        softly.assertAll();
-
-    }
-
-    @Test
-    public void testBackstagePassesUpdateDay0AndLess(){
-        ItemBackstagePass item = new ItemBackstagePass(0, 0);
-
-        item.updateItemQuality();
-
-        SoftAssertions softly = new SoftAssertions();
-
-        softly.assertThat(item.getQuality())
-                .as("Backstage quality")
-                .isEqualTo(0);
-        softly.assertThat(item.getSellIn())
-                .as("Backstage Day left")
-                .isEqualTo(0);
-
-        softly.assertAll();
-
-    }
-
-    @Test
-    public void testBackstagePassesUpdate(){
-        ItemBackstagePass item = new ItemBackstagePass(15, 12);
+    @ParameterizedTest
+    @CsvSource({
+            "2, 50, 50, 1",
+            "10, 0, 2, 9",
+            "5, 0, 3, 4",
+            "0, 0, 0 ,0",
+            "15, 12, 13, 14"
+    })
+    public void testBackstagePassesUpdate(int sellIn, int quality, int expectedQuality, int expectedSellIn){
+        ItemBackstagePass item = new ItemBackstagePass(sellIn, quality);
         item.updateItemQuality();
 
         SoftAssertions softly = new SoftAssertions();
 
         softly.assertThat(item.getQuality())
                 .as("Backstage passes to a TAFKAL80ETC concert quality")
-                .isEqualTo(13);
+                .isEqualTo(expectedQuality);
 
         softly.assertThat(item.getSellIn())
                 .as("Backstage passes to a TAFKAL80ETC concert price")
-                .isEqualTo(14);
+                .isEqualTo(expectedSellIn);
 
         softly.assertAll();
     }

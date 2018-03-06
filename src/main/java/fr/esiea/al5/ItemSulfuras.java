@@ -2,13 +2,14 @@ package fr.esiea.al5;
 
 public class ItemSulfuras extends ItemAbstract {
 
+	private static int SULFURAS_IS_AWESOME = 80;
+
     /**
      * Constructor of the item Sulfuras
      * @param sellIn : Number of days to sell the item
-     * @param quality : Value of the item
      */
-	public ItemSulfuras(int sellIn, int quality) {
-		super(SpecialItems.SULFURAS.getName(), sellIn, quality, false);
+	public ItemSulfuras(int sellIn) {
+		super(SpecialItems.SULFURAS.getName(), sellIn, SULFURAS_IS_AWESOME, false);
 	}
 
 	@Override

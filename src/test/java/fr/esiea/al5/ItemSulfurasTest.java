@@ -33,7 +33,7 @@ public class ItemSulfurasTest {
 
     @Test
     public void testObjectQualityUpdate(){
-        ItemSulfuras item = new ItemSulfuras(0, 80);
+        ItemSulfuras item = new ItemSulfuras(0);
         item.updateItemQuality();
 
         SoftAssertions softly = new SoftAssertions();

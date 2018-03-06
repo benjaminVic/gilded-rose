@@ -30,7 +30,10 @@ public class ItemAbstract implements Item {
      */
     @Override
     public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality;
+        return "\tName : " + this.name +
+                "\n\tSellIn : " + this.sellIn +
+                "\n\tQuality : " + this.quality +
+                "\n\tConjured : " + this.conjured ;
     }
 
     /**
@@ -134,4 +137,5 @@ public class ItemAbstract implements Item {
             this.decreaseQuality();
         }
     }
+
 }
