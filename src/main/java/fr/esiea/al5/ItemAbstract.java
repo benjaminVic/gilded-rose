@@ -12,10 +12,10 @@ public class ItemAbstract implements Item {
 
     /**
      * Item constructor
-     * @param name
-     * @param sellIn
-     * @param quality
-     * @param conjured
+     * @param name : Name of the Item
+     * @param sellIn : Number of days until which the item is sold
+     * @param quality : Value of the Item
+     * @param conjured : Curse Status of the item
      */
     public ItemAbstract(String name, int sellIn, int quality, boolean conjured) {
         this.name = name;
